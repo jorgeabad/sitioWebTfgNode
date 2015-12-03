@@ -1,0 +1,113 @@
+<!-- _partial/archive -->
+<%
+   var title = '';
+   if (page.category) title = page.category;
+   if (page.tag) title = page.tag;
+   if (page.archive){
+   	  if (page.year) title = page.year + (page.month ? '/' + page.month : '');
+   	  else title = __('archive_a');
+   }
+   var year, month;
+   var last_year = 1970;
+   var is_first_year = 1;
+   var modulo='';
+   %>
+
+   <% theme.capitulos.forEach(function(m){ %>
+     <% m.Temas.forEach(function(t){ %>
+       <% if (t.Titulo==title){
+         modulo=m.categoria + ' / ';
+       } %>
+       <% }) %>
+       <% }) %>
+<!-- archive.title -->
+<div class="page-header">
+  <h1 class="archive-title<%
+    if (page.tag){ %>-tag archive-title-<%= page.tag %><% }
+    else if (page.category){ %>-category<% }
+    %>"><%= modulo%><%= title %></h1>
+</div>
+
+<div class="row page">
+  <!-- cols -->
+  <% if (theme.widgets.length) { %>
+  <div class="col-md-9">
+	<% } else { %>
+	<div class="col-md-12">
+	  <% } %>
+
+
+
+
+
+
+<% theme.capitulos.forEach(function(m){ %>
+  <% if (title==m.categoria) { %>
+    <a href="<%- url_for(site.categories.findOne({name: m.categoria}).path) %>"><h3><%= m.categoria%></h3></a>
+
+    <% m.Temas.forEach(function(t){ %>
+      <% var categoria=t.Titulo; %>
+      <% if (site.categories.findOne({name: categoria})) {%>
+    <ul>
+      <li>
+       <div class="archive">
+      <h4 class="archive-ul" data-toggle="collapse" data-target="#<%= t.id%>"><a href="<%- url_for(site.categories.findOne({name: categoria}).path) %>"><%= t.Titulo%></a><b class="caret"></b></h4>
+      <ul class="collapse in" id="<%= t.id%>">
+
+    <% site.categories.findOne({name: categoria}).posts.sort('name', -1).each(function(post){ %>
+
+    <li class="listing-item">
+      <span class="title"><a href="<%- url_for(post.path) %>"><%= post.title || '(no title)' %></a></span>
+    </li>
+
+
+    <% }) %>
+
+    </ul>
+    </div>
+    </li>
+    </ul>
+    <% } else{%>
+      <ul>
+        <li>
+      <h4 class="archive-ul" data-toggle="collapse" data-target="#<%= t.id%>"><%= t.Titulo%><b class="caret"></b></h4>
+    </li>
+    </ul>
+    <% } %>
+    <% }) %>
+
+
+
+    <% } else { %>
+<% m.Temas.forEach(function(t){ %>
+<% if (title==t.Titulo) { %>
+  <% var categoria=t.Titulo; %>
+  <% if (site.categories.findOne({name: categoria})) {%>
+<ul>
+  <li>
+   <div class="archive">
+  <h4 class="archive-ul" data-toggle="collapse" data-target="#<%= t.id%>"><a href="<%- url_for(site.categories.findOne({name: categoria}).path) %>"><%= t.Titulo%></a><b class="caret"></b></h4>
+  <ul class="collapse in" id="<%= t.id%>">
+
+<% site.categories.findOne({name: categoria}).posts.sort('name', -1).each(function(post){ %>
+
+<li class="listing-item">
+  <span class="title"><a href="<%- url_for(post.path) %>"><%= post.title || '(no title)' %></a></span>
+</li>
+
+
+<% }) %>
+<% } %>
+</ul>
+</div>
+</li>
+</ul>
+<% } %>
+<% }) %>
+<% } %>
+<% }) %>
+</div> <!-- col-md-9/col-md-12 -->
+
+<% if (theme.widgets.length) { %>
+<%- partial('sidebar') %>
+<% } %>

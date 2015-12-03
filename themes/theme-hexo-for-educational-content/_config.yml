@@ -1,0 +1,135 @@
+bootswatch:
+
+slogan: "Full stack javascript"
+
+home: Inicio
+iconHome: fa fa-home
+
+menu:
+#  - title: Archivos
+#    url: archives
+#    intro: "All the articles."
+#    icon: "fa fa-archive"
+  - title: Indice
+    url: indice
+    intro: "Todos los temas y capítulos"
+    icon: "fa fa-list"
+
+menuSecciones:
+  - title: Acerca de
+    url: about
+    intro: "Acerca de esta página"
+    icon: "fa fa-info-circle"
+#  - title: Etiquetas
+#    url: tags
+#    intro: "All the tags."
+#    icon: "fa fa-tags"
+
+links:
+  - title: Tema "hexo" para contenido educativo.
+    url: https://github.com/jorgeabad/theme-hexo-for-educational-content.git
+    intro: "theme-hexo-for-educational-content, Github repository."
+    icon: "fa fa-github"
+  - title: "Mi Github"
+    url: https://github.com/jorgeabad
+    intro: "Mi cuenta en github."
+    icon: "fa fa-github"
+
+widgets:
+- search
+- category
+- tagcloud
+- recent_posts
+- links
+
+rss: true
+fancybox: true
+favicon: favicon.png
+google_analytics:
+
+#Organizado de 1..n Módulos y en cada Módulo de 1..n Temas.
+#Cada categoría de un módulo y cada título de un tema han de coincidir con una categoría hexo.
+#Al crear el post se añadirá en orden jerárquico como categorias
+capitulos:
+  - Módulo 1:
+    categoria: Módulo 1
+    id: modulo1
+    url: modulo_1
+    descripcion: Fundamentos de la programación en js y node.js
+    img: imagen.png
+    icon: "fa fa-book"
+    Temas:
+      - 1:
+        Titulo: Aspectos de la programación js
+        id: m1tema1
+        Descripcion: Breve descripción del tema para mostrar.
+        img: imagen.png
+      - 2:
+        Titulo: Aspectos de node.js
+        id: m1tema2
+        Descripcion: Breve descripción del tema para mostrar.
+        img: imagen.png
+      - 3:
+        Titulo: API Node.js I
+        id: m1tema3
+        Descripcion: Breve descripción del tema para mostrar.
+        img: imagen.png
+      - 4:
+        Titulo: API Node.js II
+        id: m1tema4
+        Descripcion: Breve descripción del tema para mostrar.
+        img: imagen.png
+  - Módulo 2:
+    categoria: Módulo 2
+    id: modulo2
+    url: modulo_2
+    descripcion: Desarrllo web con Node.js
+    icon: "fa fa-book"
+    Temas:
+      - 1:
+        Titulo: API HTTP
+        id: ApiHttp
+        Descripcion: Breve descripción del tema para mostrar.
+        img: imagen.png
+      - 2:
+        Titulo: Express
+        id: express
+        Descripcion: Breve descripción del tema para mostrar.
+        img: imagen.png
+      - 3:
+        Titulo: Mongodb
+        id: mongodb
+        Descripcion: Breve descripción del tema para mostrar.
+        img: imagen.png
+      - 4:
+        Titulo: Socket.io
+        id: socketio
+        Descripcion: Breve descripción del tema para mostrar.
+        img: imagen.png
+  - Módulo 3:
+    categoria: Módulo 3
+    id: modulo3
+    url: modulo_3
+    descripcion: Descripción tema módulo 3
+    icon: "fa fa-book"
+    Temas:
+      - 1:
+        Titulo: Tema 1 Modulo 3
+        id: t1m3
+        Descripcion: Breve descripción del tema para mostrar.
+        img: imagen.png
+      - 2:
+        Titulo: Tema 2 Modulo 3
+        id: t2m3
+        Descripcion: Breve descripción del tema para mostrar.
+        img: imagen.png
+      - 3:
+        Titulo: Tema 3 Modulo 3
+        id: t3m3
+        Descripcion: Breve descripción del tema para mostrar.
+        img: imagen.png
+      - 4:
+        Titulo: Tema 4 Modulo 3
+        id: t4m3
+        Descripcion: Breve descripción del tema para mostrar.
+        img: imagen.png

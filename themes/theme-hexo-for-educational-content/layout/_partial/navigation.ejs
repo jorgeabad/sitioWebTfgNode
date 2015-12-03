@@ -1,0 +1,45 @@
+
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <a class="navbar-brand" href="<%- config.root %>"><i class="<%- theme.iconHome %>"></i> <%= theme.home %></a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+              <% theme.menu.forEach(function(m){ %>
+              <li class="page-scroll">
+                <a href="<%- config.root %><%- m.url %>" title="<%- m.intro %>">
+                  <i class="<%- m.icon %>"></i> <%- m.title %>
+                </a>
+              </li>
+              <% }) %>
+              <% theme.capitulos.forEach(function(m){ %>
+                    <li class="page-scroll">
+                    <a  href="<%- config.root %>#<%- m.id %>"><i class="<%- m.icon %>"></i> <%= m.categoria %></a>
+                    </li>
+                <% }) %>
+                <% theme.menuSecciones.forEach(function(m){ %>
+                <li class="page-scroll">
+                  <a href="<%- config.root %>#<%- m.url %>">
+                    <i class="<%- m.icon %>"></i> <%- m.title %>
+                  </a>
+                </li>
+                <% }) %>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+<div class="clearfix"></div>

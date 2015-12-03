@@ -1,0 +1,62 @@
+<!-- Portfolio Modals -->
+<div class="row page">
+
+	<div class="page-header">
+	  <h1>   <i class="fa fa-list"></i> Índice de contenidos</h1>
+	</div>
+
+
+
+	<% if (theme.widgets.length) { %>
+	<div class="col-md-9">
+	<% } else { %>
+	<div class="col-md-12">
+	<% } %>
+
+<% theme.capitulos.forEach(function(m){ %>
+	<% var categoria=m.categoria; %>
+  <% if (site.categories.findOne({name: categoria})) {%>
+  <a href="<%- url_for(site.categories.findOne({name: m.categoria}).path) %>"><h3><%= m.categoria%></h3></a>
+	<%}else{%>
+		<h3><%= m.categoria%></h3>
+	<%}%>
+<% m.Temas.forEach(function(t){ %>
+  <% var categoria=t.Titulo; %>
+  <% if (site.categories.findOne({name: categoria})) {%>
+    <ul>
+      <li>
+<h4 class="archive-ul" data-toggle="collapse" data-target="#<%= t.id%>"><a href="<%- url_for(site.categories.findOne({name: categoria}).path) %>"><%= t.Titulo%></a><b class="caret"></b></h4>
+
+   <div class="archive">
+
+
+  <ul class="collapse in" id="<%= t.id%>">
+<% site.categories.findOne({name: categoria}).posts.sort('name', -1).each(function(post){ %>
+
+<li class="listing-item">
+  <span class="title"><a href="<%- url_for(post.path) %>"><%= post.title || '(no title)' %></a></span>
+</li>
+
+
+<% }) %>
+
+</ul>
+</div>
+</li>
+</ul>
+<% } else{%>
+  <ul>
+    <li>
+  <h4 class="archive-ul" data-toggle="collapse" data-target="#<%= t.Titulo%>"><%= t.Titulo%><b class="caret"></b></h4>
+</li>
+</ul>
+<% } %>
+<% }) %>
+<% }) %>
+
+</div>
+<% if (theme.widgets.length) { %>
+  <%- partial('_partial/sidebar') %>
+<% } %>
+
+</div>
